@@ -35,7 +35,6 @@ public:
         return remove;
     }
     
-    // Minimax.. get best word to guess
     string minimax(vector<string>& wordList) {
         int n = wordList.size();
         map<string, int> count;
@@ -59,24 +58,13 @@ public:
     
     void findSecretWord(vector<string>& wordlist, Master& master) {
 
-        // we need to reduce the search space in some way. Otherwise we need to guess every word as a guess. 
-        // The only information we have after making a guess is the number of matches the word will has with the secret
-        
-        // i. Guess the word -> say the distance is x
-        // ii. remove the words which are not at distance x from word in search space
-
-        // But... How do we know which word to choose? 
-        // We have to choose that word as our guess, which will maximize the (minimum number of words which can be removed if that word is chosen as the guess (for this we need to consider every other word as the secret word and see how many words are being removed))
-
         auto reducedlist = wordlist;
         
         while (true) {
             auto guess = minimax(reducedlist);
             int d = master.guess(guess);
-            // cout << guess << " " << d << endl;
             if (d == 6) break;
             reducedlist = reducelist(reducedlist, guess, d);
-            // cout << reducedlist.size() << endl;
         }
         
     }
