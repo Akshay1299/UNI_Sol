@@ -4,7 +4,7 @@ public:
     vector<int> height;
     int l, sum;
 
-    void dfs(int u, int p, int h){ //construct up for binary lifting
+    void dfs(int u, int p, int h){ 
         height[u] = h;
         up[u][0] = p;
         for(int i = 1; i <= l; i++)
