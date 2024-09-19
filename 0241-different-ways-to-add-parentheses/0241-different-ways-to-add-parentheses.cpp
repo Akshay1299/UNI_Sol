@@ -30,11 +30,8 @@ class Solution {
         if(res.empty()){
             res.push_back(stoi(s.substr(i, j - i + 1)));
         }
-
         return res;
-
     }
-    
     public:
     
     vector<int> diffWaysToCompute(string s) {
